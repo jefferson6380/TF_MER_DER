@@ -1,0 +1,37 @@
+CREATE TABLE meuBanco;
+USE meuBanco;
+
+CREATE TABLE clientes(
+usuario varchar(100),
+senha varchar(100)
+);
+
+
+INSERT INTO clientes (usuario, senha) VALUES('jeffeson', 'senha1');
+INSERT INTO clientes (usuario, senha) VALUES('maria', 'senha_maria');
+INSERT INTO clientes (usuario, senha) VALUES('joão', 'senha_joão');
+
+select * from clientes;
+
+
+
+CREATE PROCEDURE inserirCliente(
+IN nomeUsuario VARCHAR(100),
+IN senhaUsuario VARCHAR(100)
+)
+BEGIN
+	INSERT INTO clientes (usuario, senha) VALUES(nomeUsuario, senhaUsuario);
+END
+CALL inserirClientes('jefferson', 'minhasenha');
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE select_clientes(
+IN nome_usuario VARCHAR(100),
+IN senha_usuario VARCHAR(100))
+begin
+	SELECT * FROM clientes;
+end //
+DELIMITER ;
